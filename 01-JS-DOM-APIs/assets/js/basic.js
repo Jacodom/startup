@@ -15,7 +15,7 @@ window.onload = function () {
 
   var config = {
     method: "GET",
-    url: "http://api.icndb.com/jokes/random",
+    url: "asssss",
     async_value: true
   };
 
@@ -29,7 +29,8 @@ window.onload = function () {
         response.innerHTML = JSON.parse(xhr.responseText).value.joke;
       }
       else{
-        response.innerHTML = "failed: "+ xhr.statusText;
+        response.innerHTML = "failed: " + xhr.statusText;
+        response.className = "error-response";
       }
     }
 

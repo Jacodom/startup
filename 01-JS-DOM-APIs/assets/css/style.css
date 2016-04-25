@@ -14,3 +14,7 @@ section {
 #helloWorld.faded {
   opacity: 1;
 }
+
+#response.error-response {
+  color: red;
+}
