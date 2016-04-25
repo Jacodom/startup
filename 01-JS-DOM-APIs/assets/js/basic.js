@@ -13,6 +13,11 @@ window.onload = function () {
   var button = document.getElementById('button');
   var response = document.getElementById('response');
 
+  var config = {
+    method: "GET",
+    url: "http://api.icndb.com/jokes/random",
+    async_value: true
+  };
 
 
   button.addEventListener('click', function(){
@@ -28,7 +33,7 @@ window.onload = function () {
       }
     }
 
-    xhr.open("GET", "http://api.icndb.com/jokes/random", true);
+    xhr.open(config.method, config.url, config.async_value);
     xhr.send();
 
   });
