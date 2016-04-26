@@ -46,50 +46,105 @@ window.onload = function () {
   });
 
 
+
+
+
   gitBtn.addEventListener("click", function(){
+    // var configGit = {
+    //   method: "GET",
+    //   url: "https://api.github.com/search/repositories",
+    //   async_value: true,
+    //   data:{
+    //     q: ""
+    //   }
+    // }
+    var promise = new Promise(function(resolve, reject){
 
-    var configGit = {
-      method: "GET",
-      url: "https://api.github.com/search/repositories",
-      async_value: true,
-      data:{
-        q: ""
+      var configGit = {
+        method: "GET",
+        url: "https://api.github.com/search/repositories",
+        async_value: true,
+        data:{
+          q: ""
+        }
       }
-    }
 
-    var repoList = document.getElementById('repoList');
-    var xhr = new XMLHttpRequest();
+      var xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState == 4 && xhr.status == 200){
-        var repos = [];
-            repos = JSON.parse(xhr.responseText).items;
-
-            repos.forEach(function (repo) {
-                var li = document.createElement("li");
-                var text = document.createTextNode(repo.full_name);
-                li.appendChild(text);
-                repoList.appendChild(li);
-            });
+      xhr.onreadystatechange = function(){
+        //everything is ok
+        if(xhr.readyState == 4 && xhr.status == 200){
+          var repos = [];
+          repos = JSON.parse(xhr.responseText).items;
+          if(repos!==undefined){
+            resolve(repos);
+          }else{
+            reject("algo se rompio!");
+          }
+        }
       }
-    }
 
-    var repoSearch = document.getElementById('repoSearch');
+      var repoSearch = document.getElementById('repoSearch');
 
-    configGit.data.q = repoSearch.value;
+      configGit.data.q = repoSearch.value;
 
-    var url = "";
+      var url = "";
 
-    console.log(configGit);
+      if(configGit.data.q != "" && configGit.data !== undefined){
+        url = configGit.url + "?q=" + configGit.data.q;
+      }else{
+        url = configGit.url;
+      }
 
-    if(configGit.data.q != "" && configGit.data !== undefined){
-      url = configGit.url + "?q=" + configGit.data.q;
-    }else{
-      url = configGit.url;
-    }
+      xhr.open(configGit.method, url, configGit.async_value);
+      xhr.send();
+    });
 
-    console.log(url);
+    promise.then(function(repos){
+      console.log(repos);
+      repos.forEach(function (repo) {
+        var li = document.createElement("li");
+        var text = document.createTextNode(repo.full_name);
+        li.appendChild(text);
+        repoList.appendChild(li);
+      });
+    }, function(err){
+      console.log(err);
+    });
 
-    xhr.open(configGit.method, url, configGit.async_value);
-    xhr.send();
+    // var repoList = document.getElementById('repoList');
+    // var xhr = new XMLHttpRequest();
+    //
+    // xhr.onreadystatechange = function(){
+    //   if(xhr.readyState == 4 && xhr.status == 200){
+    //     var repos = [];
+    //         repos = JSON.parse(xhr.responseText).items;
+    //
+    //         repos.forEach(function (repo) {
+    //             var li = document.createElement("li");
+    //             var text = document.createTextNode(repo.full_name);
+    //             li.appendChild(text);
+    //             repoList.appendChild(li);
+    //         });
+    //   }
+    // }
+    //
+    // var repoSearch = document.getElementById('repoSearch');
+    //
+    // configGit.data.q = repoSearch.value;
+    //
+    // var url = "";
+    //
+    // console.log(configGit);
+    //
+    // if(configGit.data.q != "" && configGit.data !== undefined){
+    //   url = configGit.url + "?q=" + configGit.data.q;
+    // }else{
+    //   url = configGit.url;
+    // }
+    //
+    // console.log(url);
+    //
+    // xhr.open(configGit.method, url, configGit.async_value);
+    // xhr.send();
   });
