@@ -10,6 +10,7 @@ window.onload = function () {
     }, 1000);
   }
 }
+
   var button = document.getElementById('button');
   var response = document.getElementById('response');
   var gitBtn = document.getElementById('gitButton');
@@ -22,14 +23,7 @@ window.onload = function () {
   };
 
 
-  var configGit = {
-    method: "GET",
-    url: "https://api.github.com/search/repositories",
-    async_value: true,
-    data:{
-      q: "javascript"
-    }
-  }
+
 
 
   button.addEventListener('click', function(){
@@ -52,9 +46,18 @@ window.onload = function () {
   });
 
 
-  var getRepos = function(configGit){
-    var repoList = document.getElementById('repoList');
+  gitBtn.addEventListener("click", function(){
 
+    var configGit = {
+      method: "GET",
+      url: "https://api.github.com/search/repositories",
+      async_value: true,
+      data:{
+        q: ""
+      }
+    }
+
+    var repoList = document.getElementById('repoList');
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function(){
@@ -71,9 +74,15 @@ window.onload = function () {
       }
     }
 
+    var repoSearch = document.getElementById('repoSearch');
+
+    configGit.data.q = repoSearch.value;
+
     var url = "";
 
-    if(configGit.data.q != ""){
+    console.log(configGit);
+
+    if(configGit.data.q != "" && configGit.data !== undefined){
       url = configGit.url + "?q=" + configGit.data.q;
     }else{
       url = configGit.url;
@@ -83,6 +92,4 @@ window.onload = function () {
 
     xhr.open(configGit.method, url, configGit.async_value);
     xhr.send();
-  }
-
-  gitBtn.addEventListener("click", getRepos(configGit));
+  });
