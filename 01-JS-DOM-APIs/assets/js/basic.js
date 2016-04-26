@@ -18,7 +18,7 @@ window.onload = function () {
 
   var config = {
     method: "GET",
-    url: "asssss",
+    url: "http://api.icndb.com/jokes/random",
     async_value: true
   };
 
@@ -111,6 +111,7 @@ window.onload = function () {
     }, function(err){
       console.log(err);
     });
+
 
     // var repoList = document.getElementById('repoList');
     // var xhr = new XMLHttpRequest();

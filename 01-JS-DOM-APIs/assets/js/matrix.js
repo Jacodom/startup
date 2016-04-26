@@ -40,7 +40,7 @@ window.onload = function(){
       var text = document.createTextNode(v);
       td.appendChild(text);
       tr.appendChild(td);
-    }, tbody);
+    }, tr);
 
     tbody.appendChild(tr);
 
