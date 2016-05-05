@@ -1,19 +1,19 @@
 <h1>Details</h1>
-<h2>{{movie.title}}</h2>
+<h2>{{selectedMovie.title}}</h2>
 <ul>
   <li>
-    Year: {{movie.year}}
+    Year: {{selectedMovie.year}}
   </li>
   <li>
-    Director: {{movie.details.director}}
+    Director: {{selectedMovie.details.director}}
   </li>
   <li>
-    Actors: {{movie.details.actors[0]}}, {{movie.details.actors[1]}}, {{movie.details.actors[2]}}
+    Actors: {{selectedMovie.details.actors[0]}}, {{selectedMovie.details.actors[1]}}, {{selectedMovie.details.actors[2]}}
   </li>
   <li>
-    Genre: {{movie.details.genre}}
+    Genre: {{selectedMovie.details.genre}}
   </li>
   <li>
-    IMDB calification: {{movie.details.imdb}}
+    IMDB calification: {{selectedMovie.details.imdb}}
   </li>
 </ul>
