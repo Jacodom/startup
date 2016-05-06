@@ -28,4 +28,5 @@ function ($scope, $state, MoviesService) {
     $scope.refreshMovieList();
   }
 
+
 }]);
