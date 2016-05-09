@@ -23,6 +23,7 @@
     "angular": "1.2.29",
     "jQuery": "^2.2.3",
     "angular-ui-router": "^0.2.18",
-    "a0-angular-storage": "^0.0.15"
+    "a0-angular-storage": "^0.0.15",
+    "angular-mocks": "^1.5.5"
   }
 }

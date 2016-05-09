@@ -82,7 +82,7 @@ function(store){
       lastMovie = m;
     }, lastMovie);
 
-    movie.id = lastMovie.id++;
+    movie.id = parseInt(lastMovie.id)+ 1;
 
     this._movies.push(movie);
   }
@@ -110,6 +110,19 @@ function(store){
         }
       });
     }
+  }
+
+  this.findMovie = function(movie){
+    var finded;
+    if(this._movies){
+      this._movies.forEach(function(m, i){
+        if(m.id === movie.id){
+          finded = m;
+        }
+      }, finded);
+    }
+
+    return finded;
   }
 
   //init
@@ -145,6 +158,10 @@ function(store){
       that.editMovie(movie);
       //save the array
       that.setStoredMovies();
+    },
+    findMovie: function(movie){
+      //search the movie by its id
+      return that.findMovie(movie);
     }
   }
 
