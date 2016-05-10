@@ -1,0 +1,11 @@
+<h2>{{pageTitle}}</h2>
+
+<form class="" action="" ng-model="movie" ng-submit="saveData()">
+   <label for="id">ID</label><input type="text" name="id" value="" ng-model="movie.id">
+   <label for="title">Title</label><input type="text" name="title" value="" ng-model="movie.title">
+   <label for="year">Year</label><input type="text" name="year" value="" ng-model="movie.year">
+   <label for="genre">Genre</label><input type="text" name="genre" value="" ng-model="movie.details.genre" >
+   <label for="imdb">IMDB</label><input type="number" name="imdb" value="" ng-model="movie.details.imdb" >
+   <label for="director">Director</label><input type="text" name="director" value="" ng-model="movie.details.director" >
+   <button type="submit" name="button">I'm done</button>
+</form>

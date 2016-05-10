@@ -1,0 +1,35 @@
+{
+  "name": "topic3-angular",
+  "version": "1.0.0",
+  "description": "sarasa",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "karma run karma.conf.js"
+  },
+  "author": "Jacobo",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.10.1",
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coverage": "^0.2.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-jasmine": "^0.3.8",
+    "karma-jshint": "^0.1.0",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "^0.1.2",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "phantomjs": "^1.9.15"
+  }
+}

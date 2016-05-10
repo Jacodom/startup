@@ -106,4 +106,10 @@ $RECYCLE.BIN/
 # Linux trash folder which might appear on any partition or disk
 .Trash-*
 
+<<<<<<< HEAD
+
+02-oop-inheritance/dist/
+02-oop-inheritance/node_modules/
 02-oop-inheritance/dist
+03-MVC-AngularJS/bower_components/
+03-MVC-AngularJS/node_modules/
