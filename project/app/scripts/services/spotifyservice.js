@@ -13,7 +13,7 @@ angular.module('spotifyClientApp')
     '$q',
     '$http',
     'store',
-    function (store, $q, $http, store) {
+    function (store, $q, $http) {
 
     //playlist obj
     this._playlist = {};
@@ -56,6 +56,10 @@ angular.module('spotifyClientApp')
       return this.settings.scope;
     };
 
+    this.getScope = function(){
+      return this.settings.scope;
+    };
+
     //API Calls
 
     //=======Base URL ======//
@@ -66,7 +70,7 @@ angular.module('spotifyClientApp')
 
       $http({
         url: this.settings.baseURL + endpoint,
-        method: method ? method = 'GET',
+        method: method ? method : 'GET',
         params: params,
         headers: headers
       })
@@ -82,17 +86,21 @@ angular.module('spotifyClientApp')
 
     this.getAuthHeaders = function(json){
       var header = {
-        'Authorization': 'Bearer' + this.authToken;
+        'Authorization': 'Bearer' + this.settings.authToken
       }
 
       if(json){
-        header['Content-Type']: 'application/json';
+        header['Content-Type'] = 'application/json';
       }
 
       return header;
     };
 
+    //=========USER DATA ======//
 
+    this.getUserData = function(){
+      return this.callAPI('/me', 'GET', null, null, this.getAuthHeaders());
+    };
 
     //==========PLAYLISTS=======//
 
@@ -132,9 +140,9 @@ angular.module('spotifyClientApp')
 
     this.addTracksPlaylistRemote = function(userId, playlistId, tracks, options){
       if(tracks){
-        tracks.forEach(function(track, index)){
+        tracks.forEach(function(track, index){
           tracks[index] = 'spotify:track:' + track.id;
-        }
+        });
       }
 
       return this.callAPI('/users/' + userId + '/playlists/', + playlistId + '/tracks', 'POST', {
@@ -152,7 +160,7 @@ angular.module('spotifyClientApp')
       return this.callAPI('/search', 'GET', options);
     };
 
-    that = this;
+    var that = this;
 
     // Public API here
     return {
@@ -180,6 +188,27 @@ angular.module('spotifyClientApp')
       },
       search: function(query, type){
         return that.search(query, type);
+      },
+      getUserData: function(){
+        return that.getUserData();
+      },
+      setClientId: function(clientId){
+        that.setClientId(clientId);
+      },
+      getClientId: function(){
+        return that.getClientId();
+      },
+      setRedirectUri: function(redirectUri){
+        that.setRedirectUri(redirectUri);
+      },
+      getRedirectUri: function(){
+        return that.getRedirectUri();
+      },
+      setScope: function(scope){
+        that.setScope(scope);
+      },
+      getScope: function(){
+        return that.getScope();
       }
     };
   }]);

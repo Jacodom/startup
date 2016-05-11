@@ -20,18 +20,18 @@ angular
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('main');
+    $urlRouterProvider.otherwise('/login');
 
     $stateProvider
-      .state('main',{
-        url: '/',
-        templateUrl: '../views/main.html',
-        controller: 'MainCtrl'
+      .state('login',{
+        url: '/login',
+        templateUrl: '../views/login.html',
+        controller: 'LoginCtrl'
       })
-      .state('about',{
-        url: '/about',
-        templateUrl: '../views/about.html',
-        controller: 'AboutCtrl'
+      .state('callback',{
+        url: '/callback',
+        templateUrl: '../views/callback.html',
+        controller: 'CallbackCtrl'
       });
 
   });
