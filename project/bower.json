@@ -11,7 +11,8 @@
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
     "angular-ui-router": "^0.2.18",
-    "a0-angular-storage": "^0.0.15"
+    "a0-angular-storage": "^0.0.15",
+    "oauth-js": "oauthio-web#^0.5.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

@@ -60,18 +60,28 @@ angular.module('spotifyClientApp')
       return this.settings.scope;
     };
 
+    this.setAuthToken = function(token){
+      this.settings.authToken = token;
+      return this.settings.authToken;
+    };
+
+    this.getAuthToken = function(token){
+      return this.settings.authToken;
+    };
+
     //API Calls
 
     //=======Base URL ======//
     this.settings.baseURL = 'https://api.spotify.com/v1';
 
     this.callAPI = function(endpoint, method, params, data, headers){
-      var deferred = $q.deferred();
+      var deferred = $q.defer();
 
       $http({
         url: this.settings.baseURL + endpoint,
         method: method ? method : 'GET',
         params: params,
+        data: data,
         headers: headers
       })
       .success(function(data){
@@ -86,7 +96,7 @@ angular.module('spotifyClientApp')
 
     this.getAuthHeaders = function(json){
       var header = {
-        'Authorization': 'Bearer' + this.settings.authToken
+        'Authorization': 'Bearer' + ' ' + this.settings.authToken
       }
 
       if(json){
@@ -160,6 +170,8 @@ angular.module('spotifyClientApp')
       return this.callAPI('/search', 'GET', options);
     };
 
+
+
     var that = this;
 
     // Public API here
@@ -193,22 +205,28 @@ angular.module('spotifyClientApp')
         return that.getUserData();
       },
       setClientId: function(clientId){
-        that.setClientId(clientId);
+        return that.setClientId(clientId);
       },
       getClientId: function(){
         return that.getClientId();
       },
       setRedirectUri: function(redirectUri){
-        that.setRedirectUri(redirectUri);
+        return that.setRedirectUri(redirectUri);
       },
       getRedirectUri: function(){
         return that.getRedirectUri();
       },
       setScope: function(scope){
-        that.setScope(scope);
+        return that.setScope(scope);
       },
       getScope: function(){
         return that.getScope();
+      },
+      setAuthToken: function(token){
+        return that.setAuthToken(token);
+      },
+      getAuthToken: function(){
+        return that.getAuthToken();
       }
     };
   }]);

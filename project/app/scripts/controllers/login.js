@@ -19,13 +19,24 @@ angular.module('spotifyClientApp')
     SpotifyService.setScope('playlist-modify-public playlist-modify-private user-read-birthdate user-read-email playlist-modify-private');
 
 
+    OAuth.initialize('ch7Ajd-McF3M_2SIZBX5QV7D1ZM');
+
     $scope.goLogin = function(){
 
-      $window.location.href = 'https://accounts.spotify.com/authorize?' +
-      'client_id=' + SpotifyService.getClientId() + '&' +
-      'response_type=code&' +
-      'redirect_uri=' + encodeURIComponent(SpotifyService.getRedirectUri()) + '&' +
-      'scope=' + encodeURIComponent(SpotifyService.getScope());
+      OAuth.popup('spotify').done(function(result) {
+			//RESULTS from the Oauth
+		    console.log(result.access_token);
+        SpotifyService.setAuthToken(result.access_token);
+        SpotifyService.getUserData().then(function(data){
+          console.log(data);
+        });
+			});
+
+      // $window.location.href = 'https://accounts.spotify.com/authorize?' +
+      // 'client_id=' + SpotifyService.getClientId() + '&' +
+      // 'response_type=code&' +
+      // 'redirect_uri=' + encodeURIComponent(SpotifyService.getRedirectUri()) + '&' +
+      // 'scope=' + encodeURIComponent(SpotifyService.getScope());
     }
 
   }]);

@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'angular-storage'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $urlRouterProvider.otherwise('/login');
 
@@ -33,5 +33,8 @@ angular
         templateUrl: '../views/callback.html',
         controller: 'CallbackCtrl'
       });
+
+      //Enable cross domain calls
+    $httpProvider.defaults.useXDomain = true;
 
   });
