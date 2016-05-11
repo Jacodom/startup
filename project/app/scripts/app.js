@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'angular-storage'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
