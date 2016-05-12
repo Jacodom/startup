@@ -141,6 +141,8 @@ angular.module('spotifyClientApp')
     this.createPlaylistLocal = function(userId, options){
       this._playlist.userId = userId;
       this._playlist.name = options.name;
+      this._playlist = {};
+      this._playlist.tracks = [];
     };
 
     this.createPlaylistRemote = function(userId, options){
