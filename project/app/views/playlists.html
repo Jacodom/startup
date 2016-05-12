@@ -1,0 +1,24 @@
+<h1>playlists</h1>
+
+<h2>USER</h2>
+<ul>
+  <li>
+    {{userData.display_name}}
+  </li>
+  <li>
+    {{userData.email}}
+  </li>
+  <li>
+    {{userData.id}}
+  </li>
+</ul>
+
+<img ng-src="{{userData.images[0].url}}" alt="profile_pic"/>
+
+
+<h2>PLAYLISTS</h2>
+<ul>
+  <li ng-repeat="playlist in playlists">
+    {{playlist.name}}
+  </li>
+</ul>

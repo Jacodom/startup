@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name spotifyClientApp.controller:MainCtrl
+ * @name spotifyClientApp.controller:PlaylistsdetailsCtrl
  * @description
- * # MainCtrl
+ * # PlaylistsdetailsCtrl
  * Controller of the spotifyClientApp
  */
 angular.module('spotifyClientApp')
-  .controller('MainCtrl', function () {
+  .controller('PlaylistsdetailsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

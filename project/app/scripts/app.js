@@ -18,23 +18,34 @@ angular
     'ngTouch',
     'angular-storage'
   ])
-  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/login');
 
     $stateProvider
-      .state('login',{
+      .state('login', {
         url: '/login',
         templateUrl: '../views/login.html',
         controller: 'LoginCtrl'
       })
-      .state('callback',{
-        url: '/callback',
-        templateUrl: '../views/callback.html',
-        controller: 'CallbackCtrl'
+      .state('playlists', {
+        url: '/playlists',
+        templateUrl: '../views/playlists.html',
+        controller: 'PlaylistsCtrl'
+      })
+      .state('playlist-details', {
+        url: '/playlist-details',
+        templateUrl: '../views/playlist-details.html',
+        controller: 'PlaylistsCtrl'
+      })
+      .state('playlists-new', {
+        url: '/playlists-new',
+        templateUrl: '../views/playlist-form.html',
+        controller: 'PlaylistsCtrl'
+      })
+      .state('playlists-edit', {
+        url: '/playlists-edit',
+        templateUrl: '../views/playlist-form.html',
+        controller: 'PlaylistEditCtrl'
       });
-
-      //Enable cross domain calls
-    $httpProvider.defaults.useXDomain = true;
-
   });

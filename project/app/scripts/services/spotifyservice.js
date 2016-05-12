@@ -61,12 +61,18 @@ angular.module('spotifyClientApp')
     };
 
     this.setAuthToken = function(token){
-      this.settings.authToken = token;
-      return this.settings.authToken;
+      if(token){
+        store.set('authToken', token);
+        this.settings.authToken = token;
+        return this.settings.authToken;
+      }
     };
 
     this.getAuthToken = function(token){
-      return this.settings.authToken;
+      if(store.get('authToken', token)){
+        this.settings.authToken = store.get('authToken');
+        return this.settings.authToken;
+      }
     };
 
     //API Calls
@@ -97,7 +103,7 @@ angular.module('spotifyClientApp')
     this.getAuthHeaders = function(json){
       var header = {
         'Authorization': 'Bearer' + ' ' + this.settings.authToken
-      }
+      };
 
       if(json){
         header['Content-Type'] = 'application/json';
@@ -119,7 +125,7 @@ angular.module('spotifyClientApp')
     };
 
     this.getPlaylist = function(userId, playlistId){
-      return this.callAPI('/users/' + userId + '/playlists', 'GET', null, null, this.getAuthHeaders());
+      return this.callAPI('/users/' + userId + '/playlists/' + playlistId , 'GET', null, null, this.getAuthHeaders());
     };
 
     this.getPlaylistTracks = function(userId, playlistId){
