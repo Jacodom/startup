@@ -26,6 +26,7 @@ angular.module('spotifyClientApp')
         SpotifyService.getUserData()
         .then(function(data){
           $scope.userData = data;
+          SpotifyService.saveUserData(data);
           $scope.loadPlaylistsUser();
         }, function(error){
           $scope.error = true;
@@ -44,6 +45,8 @@ angular.module('spotifyClientApp')
       $scope.loadUserData();
 
       // ====== user interaction ==== //
-      
+      $scope.goNew = function(){
+        $state.go('playlists-new');
+      }
 
   }]);

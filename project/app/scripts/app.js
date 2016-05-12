@@ -41,7 +41,7 @@ angular
       .state('playlists-new', {
         url: '/playlists-new',
         templateUrl: '../views/playlist-form.html',
-        controller: 'PlaylistsCtrl'
+        controller: 'PlaylistsNewCtrl'
       })
       .state('playlists-edit', {
         url: '/playlists-edit',

@@ -16,8 +16,14 @@ angular.module('spotifyClientApp')
     function (store, $q, $http) {
 
     //playlist obj
-    this._playlist = {};
-    this._playlist.tracks = [];
+
+    if(store.get('playlist')){
+      this._playlist = store.get('playlist');
+    }else{
+      this._playlist = {};
+      this._playlist.tracks = [];
+    }
+
 
 
     //settings for the spotifyservice
@@ -132,9 +138,8 @@ angular.module('spotifyClientApp')
       return this.callAPI('/users/' + userId + '/playlists/' + playlistId + '/tracks', 'GET', null, null, this.getAuthHeaders());
     };
 
-    this.createPlaylistLocal = function(userId, playlistId, options){
+    this.createPlaylistLocal = function(userId, options){
       this._playlist.userId = userId;
-      this._playlist.id = playlistId;
       this._playlist.name = options.name;
     };
 
@@ -149,10 +154,15 @@ angular.module('spotifyClientApp')
     };
 
     this.savePlaylistLocal = function(playlist){
+      console.log(playlist);
       if(playlist && playlist.tracks){
         store.set('playlist', playlist);
       }
     };
+
+    this.getPlaylistLocal = function(){
+      return store.get('playlist');
+    }
 
     this.addTracksPlaylistRemote = function(userId, playlistId, tracks, options){
       if(tracks){
@@ -176,7 +186,18 @@ angular.module('spotifyClientApp')
       return this.callAPI('/search', 'GET', options);
     };
 
+    //===== store =====//
+    this.saveUserData = function(userData){
+      if(userData){
+        store.set('userData', userData);
+      }
+    };
 
+    this.getSavedUserData = function(){
+      if(store.get('userData')){
+        return store.get('userData');
+      }
+    };
 
     var that = this;
 
@@ -194,8 +215,12 @@ angular.module('spotifyClientApp')
       createPlaylistRemote: function(userId, options){
         return that.createPlaylistRemote(userId, options);
       },
-      createPlaylistLocal: function(userId, playlistId, options){
-        that.createPlaylistLocal(userId, playlistId, options);
+      createPlaylistLocal: function(userId, options){
+        that.createPlaylistLocal(userId, options);
+        that.savePlaylistLocal(that._playlist);
+      },
+      getPlaylistLocal: function(){
+        return that.getPlaylistLocal();
       },
       addTrackPlaylistLocal: function(track){
         that.addTrackPlaylistLocal(track);
@@ -233,6 +258,12 @@ angular.module('spotifyClientApp')
       },
       getAuthToken: function(){
         return that.getAuthToken();
+      },
+      saveUserData: function(userData){
+        that.saveUserData(userData);
+      },
+      getSavedUserData: function(){
+        return that.getSavedUserData();
       }
     };
   }]);
