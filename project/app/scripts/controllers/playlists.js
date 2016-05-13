@@ -19,6 +19,11 @@ angular.module('spotifyClientApp')
       $scope.error = false;
       $scope.playlists = [];
       $scope.playlist = {};
+      $scope.playlist.tracks = [];
+
+      if(SpotifyService.getPlaylistLocal()){
+        SpotifyService.selectPlaylistEdit($scope.playlist);
+      }
 
 
       // ====== user data ==== //
@@ -36,7 +41,11 @@ angular.module('spotifyClientApp')
       $scope.loadPlaylistsUser = function(){
         SpotifyService.getUserPlaylists($scope.userData.id)
         .then(function(data){
-          $scope.playlists = data.items;
+          data.items.forEach(function(v){
+            if(v.owner.id == $scope.userData.id){
+              $scope.playlists.push(v);
+            }
+          });
         }, function(error){
           $scope.error = true;
         });
@@ -51,6 +60,11 @@ angular.module('spotifyClientApp')
         }
         SpotifyService.createPlaylistLocal($scope.userData.id, temp);
         $state.go('playlists-new');
+      }
+
+      $scope.goEdit = function(playlist){
+        SpotifyService.selectPlaylistEdit(playlist);
+        $state.go('playlists-edit');
       }
 
   }]);

@@ -155,9 +155,9 @@ angular.module('spotifyClientApp')
     };
 
     this.savePlaylistLocal = function(playlist){
-      console.log(playlist);
       if(playlist && playlist.tracks){
         store.set('playlist', playlist);
+        this._playlist = playlist;
       }
     };
 
@@ -177,6 +177,23 @@ angular.module('spotifyClientApp')
         position: null
       }, null, this.getAuthHeaders(true));
     };
+
+    this.editTracksPlaylistRemote = function(userId, playlistId, tracks){
+      var tracksToBeAdded = [];
+      tracks.forEach(function(t){
+        tracksToBeAdded.push(t);
+      }, tracksToBeAdded);
+      if(tracksToBeAdded){
+        tracksToBeAdded.forEach(function(track, index){
+          tracksToBeAdded[index] = 'spotify:track:' + track.id;
+        });
+      }
+
+      return this.callAPI('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'PUT', {
+        uris: tracksToBeAdded.toString(),
+        position: null
+      }, null, this.getAuthHeaders(true));
+    }
 
     //=======Search=======//
     this.search = function(query, type){
@@ -223,12 +240,18 @@ angular.module('spotifyClientApp')
       getPlaylistLocal: function(){
         return that.getPlaylistLocal();
       },
+      selectPlaylistEdit: function(playlist){
+        that.savePlaylistLocal(playlist);
+      },
       addTrackPlaylistLocal: function(track){
         that.addTrackPlaylistLocal(track);
         that.savePlaylistLocal(that._playlist);
       },
       addTracksPlaylistRemote: function(userId, playlistId, tracks, options){
         return that.addTracksPlaylistRemote(userId, playlistId, tracks, options);
+      },
+      editTracksPlaylistRemote: function(userId, playlistId, tracks, options){
+        return that.editTracksPlaylistRemote(userId, playlistId, tracks);
       },
       search: function(query, type){
         return that.search(query, type);

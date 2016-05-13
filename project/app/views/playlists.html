@@ -19,7 +19,7 @@
 <h2>PLAYLISTS</h2>
 <ul>
   <li ng-repeat="playlist in playlists">
-    {{playlist.name}}
+    {{playlist.name}} | <p ng-click="goEdit(playlist)">Edit</p>
   </li>
 </ul>
 

@@ -51,6 +51,7 @@ angular.module('spotifyClientApp')
        };
 
        $scope.addTrackToPlaylist = function(track){
+         console.log(track);
          if($scope.playlist.tracks.length > 0){
            var flag = false;
            $scope.playlist.tracks.forEach(function(value){
@@ -66,27 +67,31 @@ angular.module('spotifyClientApp')
            SpotifyService.addTrackPlaylistLocal(track);
            $scope.playlist.tracks = SpotifyService.getPlaylistLocal().tracks;
          }
+
+        console.log($scope.playlist.tracks);
        };
 
        $scope.uploadPlaylist = function(){
-         console.log($scope.playlist.name);
          var opt = {
            name: $scope.playlist.name
          }
          SpotifyService.createPlaylistRemote($scope.userData.id, opt)
          .then(function(data){
-           SpotifyService.addTracksPlaylistRemote($scope.userData.id, data.id, $scope.playlist.tracks, opt)
-           .then(function(data){
-             if(data){
-               console.log('se guardo!!')
-             }
-           }, function(error){
-             console.log(error);
-           });
+           if($scope.playlist.tracks.length > 0){
+             SpotifyService.addTracksPlaylistRemote($scope.userData.id, data.id, $scope.playlist.tracks, opt)
+             .then(function(data){
+               if(data){
+                 $state.go('playlists');
+               }
+             }, function(error){
+               console.log(error);
+             });
+           }else{
+             //no hay tracks, informar al usuario!!
+           }
          }, function(error){
            console.log(error);
          });
-
        }
 
 

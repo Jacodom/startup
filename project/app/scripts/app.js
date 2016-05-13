@@ -16,7 +16,7 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    'angular-storage'
+    'angular-storage',
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -46,6 +46,6 @@ angular
       .state('playlists-edit', {
         url: '/playlists-edit',
         templateUrl: '../views/playlist-form.html',
-        controller: 'PlaylistEditCtrl'
+        controller: 'PlaylistsEditCtrl'
       });
   });
