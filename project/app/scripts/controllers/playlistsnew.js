@@ -68,5 +68,26 @@ angular.module('spotifyClientApp')
          }
        };
 
+       $scope.uploadPlaylist = function(){
+         console.log($scope.playlist.name);
+         var opt = {
+           name: $scope.playlist.name
+         }
+         SpotifyService.createPlaylistRemote($scope.userData.id, opt)
+         .then(function(data){
+           SpotifyService.addTracksPlaylistRemote($scope.userData.id, data.id, $scope.playlist.tracks, opt)
+           .then(function(data){
+             if(data){
+               console.log('se guardo!!')
+             }
+           }, function(error){
+             console.log(error);
+           });
+         }, function(error){
+           console.log(error);
+         });
+
+       }
+
 
   }]);

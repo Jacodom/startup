@@ -75,7 +75,7 @@ angular.module('spotifyClientApp')
     };
 
     this.getAuthToken = function(token){
-      if(store.get('authToken', token)){
+      if(store.get('authToken')){
         this.settings.authToken = store.get('authToken');
         return this.settings.authToken;
       }
@@ -108,7 +108,7 @@ angular.module('spotifyClientApp')
 
     this.getAuthHeaders = function(json){
       var header = {
-        'Authorization': 'Bearer' + ' ' + this.settings.authToken
+        'Authorization': 'Bearer' + ' ' + this.getAuthToken()
       };
 
       if(json){
@@ -141,12 +141,11 @@ angular.module('spotifyClientApp')
     this.createPlaylistLocal = function(userId, options){
       this._playlist.userId = userId;
       this._playlist.name = options.name;
-      this._playlist = {};
       this._playlist.tracks = [];
     };
 
-    this.createPlaylistRemote = function(userId, options){
-      return this.callAPI('/users/' + userId + '/playlists', 'POST', options, null, this.getAuthHeaders(true));
+    this.createPlaylistRemote = function(userId, data){
+      return this.callAPI('/users/' + userId + '/playlists', 'POST', null, data, this.getAuthHeaders(true));
     };
 
     this.addTrackPlaylistLocal = function(track){
@@ -173,7 +172,7 @@ angular.module('spotifyClientApp')
         });
       }
 
-      return this.callAPI('/users/' + userId + '/playlists/', + playlistId + '/tracks', 'POST', {
+      return this.callAPI('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'POST', {
         uris: tracks.toString(),
         position: null
       }, null, this.getAuthHeaders(true));
@@ -214,11 +213,11 @@ angular.module('spotifyClientApp')
       getPlaylistTracks: function(userId, playlistId){
         return that.getPlaylistTracks(userId, playlistId);
       },
-      createPlaylistRemote: function(userId, options){
-        return that.createPlaylistRemote(userId, options);
+      createPlaylistRemote: function(userId, data){
+        return that.createPlaylistRemote(userId, data);
       },
-      createPlaylistLocal: function(userId, options){
-        that.createPlaylistLocal(userId, options);
+      createPlaylistLocal: function(userId, data){
+        that.createPlaylistLocal(userId, data);
         that.savePlaylistLocal(that._playlist);
       },
       getPlaylistLocal: function(){
