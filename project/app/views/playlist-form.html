@@ -1,6 +1,6 @@
 <form ng-model='playlist' ng-submit='uploadPlaylist()'>
   <div class="row">
-    <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+    <div class="col-xs-12 col-lg-6">
       <div class="start-wrapper wrap-form">
         <div class="row">
           <div class="col-xs-12">
@@ -27,9 +27,7 @@
             <div class="start-content">
                 <div class="tracks-container">
                   <!--loader -->
-                  <div ng-show="loading">
-                    <span class="fa fa-circle-o-notch fa-spin fa-3x fa-fw loading"></span>
-                  </div>
+                  <loader></loader>
 
                   <div class="row">
                     <div class="col-xs-12" ng-repeat="track in tracks">
@@ -64,51 +62,56 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-lg-8 col-lg-offset-2">
-      <div class="start-wrapper">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="start-header">
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="newPlaylistName">
-                    <h2>{{playlist.name}}</h2>
-                    <h3>Added Tracks</h3>
+    <div class="col-xs-12 col-lg-6">
+      <div class="fixed">
+        <div class="start-wrapper">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="start-header">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="newPlaylistName">
+                      <h2>{{playlist.name}}</h2>
+                      <h3>Added Tracks</h3>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="start-content">
-                <div class="tracks-container">
-                  <div class="row">
-                    <div class="col-xs-12" ng-repeat="t in playlist.tracks">
-                        <div class="row">
-                          <div class="col-xs-12">
-                            <div class="playlist-info">
-                              <div class="row">
-                                <div class="col-xs-12 info-track">
-                                  <p class="p-inline">{{t.name}} -- </p>
-                                  <p class="p-inline">{{t.artists[0].name}}</p>
-                                  <p class="albumname">{{t.album.name}}</p>
+              <div class="start-content">
+                  <div class="tracks-container">
+                    <div class="row">
+                      <perfect_scrollbar class="scroller" suppressScrollX="true" wheel-propagation="false" wheel-speed="1" min-scrollbar-length="20">
+                      <div class="col-xs-12" ng-repeat="t in playlist.tracks">
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <div class="playlist-info">
+                                <div class="row">
+                                  <div class="col-xs-12 info-track">
+                                    <p class="p-inline">{{t.name}} -- </p>
+                                    <p class="p-inline">{{t.artists[0].name}}</p>
+                                    <p class="albumname">{{t.album.name}}</p>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                      </div>
+                      </perfect_scrollbar>
                     </div>
                   </div>
-                </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 submit-container">
+            <input type="submit" class="btn btn-primary playlister-btn  no-margin animated infinite pulse" value="Save playlist!" />
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 submit-container">
+    <!-- <div class="col-xs-12 submit-container">
       <input type="submit" class="btn btn-primary playlister-btn  no-margin animated infinite pulse" value="Save playlist!" />
-    </div>
+    </div> -->
   </div>
 </form>

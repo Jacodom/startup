@@ -9,7 +9,7 @@ body {
 @media screen and (min-width : 760px){
   body {
     background-image: url('../images/concert-audience.jpg');
-    background-size: cover;
+    background-size: auto;;
   }
 }
 
@@ -109,28 +109,6 @@ h2.highlight {
   margin-top: 20px;
 }
 
-@media screen and (min-width : 760px){
-
-  .start-wrapper {
-    padding-bottom: 40px;
-  }
-
-  .start-content {
-    margin-bottom: 40px;
-  }
-
-  .start-content h2 {
-    font-size: 30px;
-  }
-
-  .logo-container{
-    width: 300px;
-  }
-
-  .btn-primary.playlister-btn {
-    font-size: 30px;
-  }
-}
 
 .playlister-btn:hover {
   background-color: #fe6580;
@@ -224,6 +202,7 @@ ul.user-data-list {
 
 .editBtnContainer span:hover {
   color: #fe6580;
+  cursor: pointer;
 }
 
 .input-group-addon {
@@ -276,4 +255,76 @@ p.trackname {
   color: #fe6580;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+
+@media screen and (min-width : 760px){
+
+
+
+  .start-content {
+    margin-bottom: 40px;
+  }
+
+  .start-content h2 {
+    font-size: 20px;
+  }
+
+  .logo-container{
+    width: 50%;
+  }
+
+  .btn-primary.playlister-btn {
+    font-size: 20px;
+  }
+
+  .user-data-list li {
+    font-size: 20px;
+  }
+
+  .user-data-list li span {
+    margin-top: 10px;
+  }
+
+  .playlists-container *{
+    font-size: 20px;
+  }
+
+  .editBtnContainer {
+    text-align: center;
+  }
+
+  span.fa.fa-pencil-square-o{
+    font-size: 40px;
+    line-height: 2;
+  }
+
+  .start-wrapper {
+    min-width: 555px;
+  }
+
+  .fixed {
+    position: fixed;
+    padding-right: 150px;
+  }
+
+  .addBtn span {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  .addBtn span:hover {
+    color: #fe6580;
+  }
+
+  .scroller {
+    overflow-y: hidden;
+    position: relative;
+    display: inline-block;
+    width: 95%;
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+  }
+
 }

@@ -17,8 +17,22 @@ angular
     'ngSanitize',
     'ngTouch',
     'angular-storage',
+    'perfect_scrollbar',
+    'toastr'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, toastrConfig) {
+
+
+      angular.extend(toastrConfig, {
+        autoDismiss: false,
+        containerId: 'toast-container',
+        maxOpened: 0,
+        newestOnTop: true,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: false,
+        preventOpenDuplicates: false,
+        target: 'body'
+      });
 
     $urlRouterProvider.otherwise('/login');
 

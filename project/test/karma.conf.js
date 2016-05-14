@@ -32,6 +32,9 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/a0-angular-storage/dist/angular-storage.js',
       'bower_components/oauth-js/dist/oauth.min.js',
+      'bower_components/perfect-scrollbar/src/perfect-scrollbar.js',
+      'bower_components/angular-perfect-scrollbar/src/angular-perfect-scrollbar.js',
+      'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

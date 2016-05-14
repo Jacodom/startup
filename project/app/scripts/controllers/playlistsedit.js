@@ -12,11 +12,13 @@ angular.module('spotifyClientApp')
     '$scope',
     '$state',
     'SpotifyService',
-    function ($scope, $state, SpotifyService) {
+    'toastr',
+    function ($scope, $state, SpotifyService, toastr) {
 
       $scope.tracks = [];
       $scope.userData = SpotifyService.getSavedUserData();
       $scope.query = '';
+      $scope.loading = false;
 
 
       $scope.init = function(){
@@ -24,12 +26,14 @@ angular.module('spotifyClientApp')
         if(SpotifyService.getPlaylistLocal()){
           $scope.playlist = SpotifyService.getPlaylistLocal();
           $scope.playlist.tracks = [];
+          $scope.loading = true;
           SpotifyService.getPlaylistTracks($scope.userData.id, $scope.playlist.id)
           .then(function(data){
             data.items.forEach(function(song){
               $scope.playlist.tracks.push(song.track);
             });
             SpotifyService.selectPlaylistEdit($scope.playlist);
+            $scope.loading = false;
           }, function(error){
             console.log(error);
           });
@@ -41,9 +45,11 @@ angular.module('spotifyClientApp')
       $scope.search = function(){
         var query = $scope.query;
         if(query != ""){
+          $scope.loading = true;
           SpotifyService.search(query, 'track')
           .then(function(data){
             $scope.tracks = data.tracks.items;
+            $scope.loading = false;
           }, function(error){
             console.log(error);
           });
@@ -78,7 +84,8 @@ angular.module('spotifyClientApp')
         console.log(tracksToBeAdded);
         SpotifyService.editTracksPlaylistRemote($scope.userData.id, $scope.playlist.id, tracksToBeAdded)
         .then(function(data){
-          console.log('se guardoo');
+          console.log(data);
+          toastr.success('all right!', 'You just edited your playlist!');
         }, function(error){
           console.log(error);;
         });

@@ -20,6 +20,7 @@ angular.module('spotifyClientApp')
       $scope.playlists = [];
       $scope.playlist = {};
       $scope.playlist.tracks = [];
+      $scope.loading = false;
 
       if(SpotifyService.getPlaylistLocal()){
         SpotifyService.selectPlaylistEdit($scope.playlist);
@@ -28,11 +29,13 @@ angular.module('spotifyClientApp')
 
       // ====== user data ==== //
       $scope.loadUserData = function(){
+        $scope.loading = true;
         SpotifyService.getUserData()
         .then(function(data){
           $scope.userData = data;
           SpotifyService.saveUserData(data);
           $scope.loadPlaylistsUser();
+          $scope.loading = false;
         }, function(error){
           $scope.error = true;
         });
