@@ -18,6 +18,8 @@ angular.module('spotifyClientApp')
        $scope.userData = SpotifyService.getSavedUserData();
        $scope.query = '';
 
+       $scope.loading = false ;
+
        $scope.init = function(){
 
          if(SpotifyService.getPlaylistLocal()){
@@ -37,10 +39,11 @@ angular.module('spotifyClientApp')
 
        $scope.search = function(){
          var query = $scope.query;
-         console.log(query);
          if(query != ""){
+           $scope.loading = true;
            SpotifyService.search(query, 'track')
            .then(function(data){
+             $scope.loading = false;
              $scope.tracks = data.tracks.items;
            }, function(error){
              console.log(error);
@@ -51,7 +54,6 @@ angular.module('spotifyClientApp')
        };
 
        $scope.addTrackToPlaylist = function(track){
-         console.log(track);
          if($scope.playlist.tracks.length > 0){
            var flag = false;
            $scope.playlist.tracks.forEach(function(value){

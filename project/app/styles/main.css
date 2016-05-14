@@ -206,6 +206,13 @@ ul.user-data-list {
   color: #62b2a5;
 }
 
+.tracks-container {
+  margin-top: 10px;
+  min-height: 50px;
+  background-color: #444;
+}
+
+
 .info-play {
   border-right: 1px solid #222;
 }
@@ -217,4 +224,56 @@ ul.user-data-list {
 
 .editBtnContainer span:hover {
   color: #fe6580;
+}
+
+.input-group-addon {
+  background: #62b2a5;
+  border: none;
+  color: #222;
+}
+
+p.artistname {
+  color: #fe6580;
+}
+
+p.albumname {
+  color: #62b2a5;
+}
+
+p.trackname {
+  color: yellow;
+}
+
+.addBtn span {
+  color: #2ecc71;
+}
+
+.p-inline {
+  display: inline;
+}
+
+.newPlaylistName h2 {
+  font-size: 20px;
+}
+
+.newPlaylistName h3 {
+  font-size: 16px;
+}
+
+.start-wrapper.wrap-form {
+  margin-bottom: 20px;
+}
+
+.submit-container {
+  text-align: center;
+}
+
+.btn-primary.playlister-btn.no-margin{
+  margin-top: 0px;
+}
+
+.loading {
+  color: #fe6580;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

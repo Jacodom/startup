@@ -56,7 +56,7 @@ angular.module('spotifyClientApp')
       // ====== user interaction ==== //
       $scope.goNew = function(){
         var temp = {
-          name: 'cool playlist'
+          name: ''
         }
         SpotifyService.createPlaylistLocal($scope.userData.id, temp);
         $state.go('playlists-new');

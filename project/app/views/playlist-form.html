@@ -1,19 +1,114 @@
-<h1>Playlist New</h1>
-<input type="text" placeholder="Search a track..." ng-model="query" ng-change="search()"/>
+<form ng-model='playlist' ng-submit='uploadPlaylist()'>
+  <div class="row">
+    <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+      <div class="start-wrapper wrap-form">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="start-header">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="nameContainer">
+                    <div class="form-group">
+                      <label for="playlistName">Give your playlist a name</label>
+                      <input type="text" class="form-control" ng-model="playlist.name" placeholder="Playlist's name"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12">
+                  <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search a track..." ng-model="query" ng-change="search()"/>
+                    <div class="input-group-addon">
+                      <span class="fa fa-search"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="start-content">
+                <div class="tracks-container">
+                  <!--loader -->
+                  <div ng-show="loading">
+                    <span class="fa fa-circle-o-notch fa-spin fa-3x fa-fw loading"></span>
+                  </div>
 
-<ul>
-  <li ng-repeat="track in tracks" ng-click="addTrackToPlaylist(track)">
-    {{track.name}} -- {{track.artists[0].name}} -- {{track.album.name}}
-  </li>
-</ul>
-
-
-<h2>My Playlist</h2>
-<h3>{{playlist.name}}</h3>
-<ul>
-  <li ng-repeat="t in playlist.tracks">
-    {{t.name}} -- {{t.artists[0].name}} -- {{t.album.name}}
-  </li>
-</ul>
-
-<button class="btn btn-success" ng-click="uploadPlaylist()">Save playlist!</button>
+                  <div class="row">
+                    <div class="col-xs-12" ng-repeat="track in tracks">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="playlist-info">
+                              <div class="row">
+                                <div class="col-xs-8 info-track">
+                                  <p class="trackname">{{track.name}}</p>
+                                </div>
+                                <div class="col-xs-4 addBtn" ng-click="addTrackToPlaylist(track)">
+                                  <span class="fa fa-plus-circle"></span>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-xs-8 info-track">
+                                  <p class="artisname">{{track.artists[0].name}}</p>
+                                  <p class="albumname">{{track.album.name}}</p>
+                                </div>
+                                <div class="col-xs-4 album-cover">
+                                  <img ng-src="{{track.album.images[2].url}}"/>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+      <div class="start-wrapper">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="start-header">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="newPlaylistName">
+                    <h2>{{playlist.name}}</h2>
+                    <h3>Added Tracks</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="start-content">
+                <div class="tracks-container">
+                  <div class="row">
+                    <div class="col-xs-12" ng-repeat="t in playlist.tracks">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="playlist-info">
+                              <div class="row">
+                                <div class="col-xs-12 info-track">
+                                  <p class="p-inline">{{t.name}} -- </p>
+                                  <p class="p-inline">{{t.artists[0].name}}</p>
+                                  <p class="albumname">{{t.album.name}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 submit-container">
+      <input type="submit" class="btn btn-primary playlister-btn  no-margin animated infinite pulse" value="Save playlist!" />
+    </div>
+  </div>
+</form>
