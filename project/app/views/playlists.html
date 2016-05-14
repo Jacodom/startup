@@ -1,26 +1,62 @@
-<h1>playlists</h1>
-
-<h2>USER</h2>
-<ul>
-  <li>
-    {{userData.display_name}}
-  </li>
-  <li>
-    {{userData.email}}
-  </li>
-  <li>
-    {{userData.id}}
-  </li>
-</ul>
-
-<img ng-src="{{userData.images[0].url}}" alt="profile_pic"/>
-
-
-<h2>PLAYLISTS</h2>
-<ul>
-  <li ng-repeat="playlist in playlists">
-    {{playlist.name}} | <p ng-click="goEdit(playlist)">Edit</p>
-  </li>
-</ul>
-
-<button class="btn btn-success" ng-click="goNew()">New</button>
+<div class="row">
+  <div class="col-xs-12 col-lg-8 col-lg-offset-2">
+    <div class="start-wrapper">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="start-header">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="logo-container text-centered">
+                  <img class="img-rounded" ng-src="{{userData.images[0].url}}" alt="profile_pic"/>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <ul class="user-data-list">
+                  <li>{{userData.display_name}}</li>
+                  <li><span class="fa fa-users highlight"></span> {{userData.followers.total}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="start-content">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="lists-header">
+                  <div class="row">
+                    <div class="col-xs-6">
+                      <h2>My playlists</h2>
+                    </div>
+                    <div class="col-xs-6">
+                      <button class="btn btn-primary playlister-btn animated infinite pulse" ng-click="goNew()"><span class="fa fa-plus"></span> New </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="playlists-container">
+                <div class="row">
+                  <div class="col-xs-12" ng-repeat="playlist in playlists">
+                      <div class="row">
+                        <div class="col-xs-12">
+                          <div class="playlist-info">
+                            <div class="row">
+                              <div class="col-xs-8 info-play">
+                                <p>{{playlist.name}}</p>
+                                <span class="fa fa-music"> </span> {{playlist.tracks.total}}
+                              </div>
+                              <div class="col-xs-4 editBtnContainer" ng-click="goEdit(playlist)">
+                                <span class="fa fa-pencil-square-o"></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

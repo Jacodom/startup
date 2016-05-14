@@ -13,7 +13,9 @@
     "angular-ui-router": "^0.2.18",
     "a0-angular-storage": "^0.0.15",
     "oauth-js": "oauthio-web#^0.5.2",
-    "font-awesome": "fontawesome#^4.6.2"
+    "font-awesome": "fontawesome#^4.6.2",
+    "normalize-css": "^4.1.1",
+    "animate.css": "^3.5.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

@@ -9,8 +9,11 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700italic,900' rel='stylesheet' type='text/css'>
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="styles/main.css">
@@ -23,7 +26,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
@@ -34,14 +37,13 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">spotifyClient</a>
+            <a class="navbar-brand" ui-sref-active="active" ui-sref="login">Home</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ui-sref="login">Login</a></li>
+              <li ui-sref-active="active" class="active"><a ui-sref="login">Login</a></li>
             </ul>
           </div>
         </div>
@@ -52,11 +54,7 @@
     <div ui-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -95,6 +93,7 @@
         <script src="scripts/controllers/playlistsnew.js"></script>
         <script src="scripts/controllers/playlistsedit.js"></script>
         <script src="scripts/controllers/playlistsdetails.js"></script>
+        <script src="scripts/controllers/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,83 +1,220 @@
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
 body {
-  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #000;
+  background-image: url('../images/concert-crowd.jpg');
+  background-size: auto;
+  background-repeat: no-repeat;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+@media screen and (min-width : 760px){
+  body {
+    background-image: url('../images/concert-audience.jpg');
+    background-size: cover;
+  }
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+.navbar {
+  border-radius: 0px;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.navbar-inverse .navbar-nav > li > a {
+  color: #62b2a5;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #fe6580;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color: #E63857;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #62b2a5;
+}
+
+a.navbar-brand {
+  color: #62b2a5;
+}
+
+a.navbar-brand:active,
+a.navbar-brand:focus,
+a.navbar-brand:hover,
+a.navbar-brand.active {
+  color: #fe6580;
+}
+
+.navbar-inverse .navbar-brand:hover {
+  color: #fe6580;
+}
+
+.navbar-inverse .navbar-brand:focus {
+  color: #E63857;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #62b2a5;
+}
+
+
+/* main styles */
+.start-wrapper {
+  -webkit-box-shadow: -1px 4px 25px 1px rgba(125,119,125,0.27);
+  -moz-box-shadow: -1px 4px 25px 1px rgba(125,119,125,0.27);
+  box-shadow: -1px 4px 25px 1px rgba(125,119,125,0.27);
+  background-color: #222;
+  margin-bottom: 50px;
+  color: #ecf0f1;
+}
+
+.start-header {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  padding: 3% 10%;
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+.start-content {
+  text-align: center;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+.start-content h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display: inline;
+}
+
+.logo-container {
+  width: 50%;
+  height: auto;
+  margin: 10px 0px 10px 0px;
+}
+
+.logo-container img {
+  width: 100%;
+  margin-left: 50%;
+}
+
+h2.highlight {
+  color: #62b2a5;
+  display: inline;
+}
+
+.btn-primary.playlister-btn {
+  font-size: 20px;
+  background-color: #62b2a5;
+  background-image: none;
+  transition: all ease-out 0.3s;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+@media screen and (min-width : 760px){
+
+  .start-wrapper {
+    padding-bottom: 40px;
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+  .start-content {
+    margin-bottom: 40px;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+
+  .start-content h2 {
+    font-size: 30px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+
+  .logo-container{
+    width: 300px;
   }
+
+  .btn-primary.playlister-btn {
+    font-size: 30px;
+  }
+}
+
+.playlister-btn:hover {
+  background-color: #fe6580;
+}
+
+.playlister-btn:focus {
+  border: none;
+}
+
+.playlister-btn:active:focus {
+  border: none;
+  background-color: #62b2a5;
+}
+
+.text-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.img-rounded {
+  border-radius: 50%;
+}
+
+ul.user-data-list {
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.user-data-list li {
+  font-size: 14px;
+}
+
+.highlight {
+  color: #62b2a5;
+}
+
+.lists-header{
+  height: auto;
+}
+
+ .lists-header h2{
+   font-size: 16px;
+   margin-left: 25px;
+   line-height: 2;
+ }
+
+ .lists-header .playlister-btn {
+   font-size: 14px;
+   margin-top: 0px;
+   margin-bottom: 0px;
+ }
+
+.playlists-container {
+  margin-top: 20px;
+  background: #222;
+  min-height: 50px;
+}
+
+.playlist-info {
+  background: #444;
+  font-size: 14px;
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px solid #222;
+}
+
+.playlist-info p {
+  color: #fe6580;
+}
+
+.playlist-info span {
+  color: #62b2a5;
+}
+
+.info-play {
+  border-right: 1px solid #222;
+}
+
+.editBtnContainer {
+  font-size: 20px;
+  line-height: 2.7;
+}
+
+.editBtnContainer span:hover {
+  color: #fe6580;
 }
