@@ -12,7 +12,8 @@ angular.module('spotifyClientApp')
     '$scope',
     '$state',
     'SpotifyService',
-     function ($scope, $state, SpotifyService) {
+    'toastr',
+     function ($scope, $state, SpotifyService, toastr) {
 
        $scope.tracks = [];
        $scope.userData = SpotifyService.getSavedUserData();
@@ -63,7 +64,7 @@ angular.module('spotifyClientApp')
              $scope.loading = false;
              $scope.tracks = data.tracks.items;
            }, function(error){
-             console.log(error);
+             toastr.error('Something went wrong, sorry, try again!', 'Connection Error!');
            });
          }else{
            $scope.tracks = [];
@@ -86,31 +87,42 @@ angular.module('spotifyClientApp')
            SpotifyService.addTrackPlaylistLocal(track);
            $scope.playlist.tracks = SpotifyService.getPlaylistLocal().tracks;
          }
-
-        console.log($scope.playlist.tracks);
        };
 
        $scope.uploadPlaylist = function(){
          var opt = {
            name: $scope.playlist.name
          }
-         SpotifyService.createPlaylistRemote($scope.userData.id, opt)
-         .then(function(data){
-           if($scope.playlist.tracks.length > 0){
-             SpotifyService.addTracksPlaylistRemote($scope.userData.id, data.id, $scope.playlist.tracks, opt)
-             .then(function(data){
-               if(data){
-                 $state.go('playlists');
-               }
-             }, function(error){
-               console.log(error);
-             });
-           }else{
-             //no hay tracks, informar al usuario!!
-           }
-         }, function(error){
-           console.log(error);
-         });
+
+         if($scope.verifyInput()){
+           SpotifyService.createPlaylistRemote($scope.userData.id, opt)
+           .then(function(data){
+             if($scope.playlist.tracks.length > 0){
+               SpotifyService.addTracksPlaylistRemote($scope.userData.id, data.id, $scope.playlist.tracks, opt)
+               .then(function(data){
+                 if(data){
+                   $state.go('playlists');
+                 }
+               }, function(error){
+                 toastr.error('Something went wrong, sorry, try again!', 'Connection Error!');
+               });
+             }else{
+               $state.go('playlists');
+             }
+           }, function(error){
+             toastr.error('Something went wrong, sorry, try again!', 'Connection Error!');
+           });
+         }else{
+           toastr.error('You must add a name to the playlist!', 'Watch out!');
+         }
+       }
+
+       $scope.verifyInput = function(){
+         if($scope.playlist.name == '' || $scope.playlist.name === undefined){
+           return false;
+         }else{
+           return true;
+         }
        }
 
 

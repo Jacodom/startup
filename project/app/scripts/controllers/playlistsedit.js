@@ -59,7 +59,7 @@ angular.module('spotifyClientApp')
             $scope.tracks = data.tracks.items;
             $scope.loading = false;
           }, function(error){
-            console.log(error);
+            toastr.error('Something went wrong, sorry, try again!', 'Connection Error!');
           });
         }else{
           $scope.tracks = [];
@@ -89,13 +89,11 @@ angular.module('spotifyClientApp')
           name: $scope.playlist.name
         }
         var tracksToBeAdded = $scope.playlist.tracks;
-        console.log(tracksToBeAdded);
         SpotifyService.editTracksPlaylistRemote($scope.userData.id, $scope.playlist.id, tracksToBeAdded)
         .then(function(data){
-          console.log(data);
           toastr.success('all right!', 'You just edited your playlist!');
         }, function(error){
-          console.log(error);;
+          toastr.error('Something went wrong, sorry, try again!', 'Connection Error!');
         });
       }
   }]);
