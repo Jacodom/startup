@@ -187,7 +187,6 @@ ul.user-data-list {
 .tracks-container {
   margin-top: 10px;
   min-height: 50px;
-  background-color: #444;
 }
 
 
@@ -327,4 +326,9 @@ p.trackname {
     overflow-x: hidden;
   }
 
+}
+
+.empty {
+  margin-top: 50px;
+  margin-bottom: 40px;
 }

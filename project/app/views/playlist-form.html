@@ -29,6 +29,9 @@
                   <!--loader -->
                   <loader></loader>
 
+                  <!-- empty search -->
+                  <empty-search></empty-search>
+
                   <div class="row">
                     <div class="col-xs-12" ng-repeat="track in tracks">
                         <div class="row">
@@ -79,6 +82,10 @@
               </div>
               <div class="start-content">
                   <div class="tracks-container">
+
+                    <!-- emptyList -->
+                    <empty-list></empty-list>
+
                     <div class="row">
                       <perfect_scrollbar class="scroller" suppressScrollX="true" wheel-propagation="false" wheel-speed="1" min-scrollbar-length="20">
                       <div class="col-xs-12" ng-repeat="t in playlist.tracks">

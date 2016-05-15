@@ -37,6 +37,23 @@ angular.module('spotifyClientApp')
 
        $scope.init();
 
+
+       $scope.checkEmptyTracks = function(){
+         if(!$scope.loading && $scope.tracks.length == 0){
+           return true;
+         }else{
+           return false;
+         }
+       }
+
+       $scope.checkEmptyPlaylist = function(){
+         if($scope.playlist.tracks.length == 0){
+           return true;
+         }else{
+           return false;
+         }
+       }
+
        $scope.search = function(){
          var query = $scope.query;
          if(query != ""){
