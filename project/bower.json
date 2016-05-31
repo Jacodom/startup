@@ -1,0 +1,36 @@
+{
+  "name": "spotify-client",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.4.0",
+    "angular-cookies": "^1.4.0",
+    "angular-resource": "^1.4.0",
+    "angular-route": "^1.4.0",
+    "angular-sanitize": "^1.4.0",
+    "angular-touch": "^1.4.0",
+    "angular-ui-router": "^0.2.18",
+    "a0-angular-storage": "^0.0.15",
+    "oauth-js": "oauthio-web#^0.5.2",
+    "font-awesome": "fontawesome#^4.6.2",
+    "normalize-css": "^4.1.1",
+    "animate.css": "^3.5.1",
+    "angular-perfect-scrollbar": "^0.0.4",
+    "angular-toastr": "^1.7.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "appPath": "app",
+  "moduleName": "spotifyClientApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}
